@@ -5,23 +5,21 @@ import { Thought } from '.';
 const thoughtSchema = new Schema(
   {
     thoughtText: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
+        type: String,
+        required: true,
+        maxlength: 200,
+        minlength: 1,
     },
     createdAt: {
-      type: String,
-      unique: true,
-      required: true,
-      trimmed: true,
+      type: Date,
+      default: Date.now,
     },
     username: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email address'],
+        type: String,
+        required: true,
     },
     reactions: {
-        // Array of `_id` values referencing the `Thought` model
+        // Array of nested documents created with the reactionSchema
         type: Schema.Types.ObjectId,
     },
   },
