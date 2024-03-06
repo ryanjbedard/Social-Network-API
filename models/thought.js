@@ -1,6 +1,7 @@
 const { Schema, Types } = require('mongoose');
 import { model } from 'mongoose';
 import { Thought } from '.';
+import * as dateFormat from 'dateformat';
 
 const thoughtSchema = new Schema(
   {
@@ -13,6 +14,9 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (timestamp) => {
+        return new Date(timestamp).toLocaleString()
+      }
     },
     username: {
         type: String,
@@ -21,6 +25,7 @@ const thoughtSchema = new Schema(
     reactions: {
         // Array of nested documents created with the reactionSchema
         type: Schema.Types.ObjectId,
+        ref: 'Reaction'
     },
   },
   {
@@ -33,7 +38,7 @@ const thoughtSchema = new Schema(
 );
 
 //Create a virtual property `reactionCount` that gets the amount of reactions per thought.
-postSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
   });
 

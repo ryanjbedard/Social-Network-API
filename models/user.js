@@ -3,10 +3,6 @@ import { model } from 'mongoose';
 
 const userSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
     userName: {
       type: String,
       unique: true,
@@ -19,13 +15,15 @@ const userSchema = new Schema(
       unique: true,
       match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email address'],
     },
-    thoughts: {
-        // Array of `_id` values referencing the `Thought` model
-        type: Schema.Types.ObjectId,
-    },
-    friends: {
+    thoughts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Thought',
+    }  
+    ],
+    friends: [{
         type: Schema.types.ObjectId,
-      },
+        ref: 'User'
+      }],
   },
   {
     toJSON: {
@@ -37,7 +35,7 @@ const userSchema = new Schema(
 );
 
 //Create virtual called friendCount that retrieves the length of the user's friends array field on query.
-postSchema.virtual('friendCount').get(function () {
+userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
   });
 
