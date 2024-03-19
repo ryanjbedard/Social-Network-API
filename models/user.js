@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-import { model } from 'mongoose';
+const { model } = require ('mongoose');
 
 const userSchema = new Schema(
   {
@@ -7,7 +7,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      trimmed: true,
+      trim: true,
     },
     email: {
       type: String,
@@ -21,7 +21,7 @@ const userSchema = new Schema(
     }  
     ],
     friends: [{
-        type: Schema.types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
       }],
   },
