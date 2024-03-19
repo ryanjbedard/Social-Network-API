@@ -1,5 +1,10 @@
+const express = require('express');
 const router = require('express').Router();
-const { User } = require('../../models');
+const { getThought, getSingleThought, createThought } = require('../../controllers/thoughtController');
+
+
+router.route('/thoughts').get(getThought).post(createThought);
+router.route('/thoughts/:thoughtId').get(getSingleThought);
 
 
 const {
@@ -10,6 +15,6 @@ const {
 
 router.route('/').get(getUser).post(createUser);
 
-router.route('/:postId').get(getSingleUser);
+router.route('/:userId').get(getSingleUser);
 
 module.exports = router;

@@ -1,7 +1,4 @@
-const { Schema, Types } = require('mongoose');
-import { model } from 'mongoose';
-import { Thought } from '.';
-import * as dateFormat from 'dateformat';
+const { Schema, model } = require('mongoose');
 
 const thoughtSchema = new Schema(
   {
