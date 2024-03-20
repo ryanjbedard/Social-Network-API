@@ -3,8 +3,8 @@ constdb = require('./config/connection');
 const routes = require('./routes/api');
 const mongoose = require('mongoose');
 
-const userRoutes = require('./routes/userRoutes');
-const thoughtRoutes = require('./routes/thoughtRoutes');
+const userRoutes = require('./routes/api/userRoutes');
+const thoughtRoutes = require('./routes/api/thoughtRoutes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
