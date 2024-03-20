@@ -16,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Social Network API!');
+});
+
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
