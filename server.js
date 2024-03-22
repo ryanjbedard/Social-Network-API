@@ -1,5 +1,5 @@
 const express = require('express');
-constdb = require('./config/connection');
+const db = require('./config/connection');
 const routes = require('./routes/api');
 const mongoose = require('mongoose');
 
@@ -11,10 +11,12 @@ const app = express();
 
 const cwd = process.cwd();
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 app.use('/api/users', userRoutes);
 app.use('/api/thoughts', thoughtRoutes);
+
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Social Network API!');
