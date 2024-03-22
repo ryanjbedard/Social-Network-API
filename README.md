@@ -2,19 +2,18 @@
 
 ## Description
 
-This is a social network API designed for users to post 'thoughts'.
+This is a social network API designed for users to post 'thoughts'. Users can have friend counts and will be able to pull users by ID via Insomnia.
 
 ## Installation
 
-Download the git repository. 
+Download the git repository.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+run npm install && npm run start in the command line. Open Insomnia to test the GET and PUT routes.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+https://drive.google.com/file/d/1umE8PHx73KOIHi4deo-tcQq20zBkJE2P/view
+![alt text](assets/Screenshot%202024-03-22%20154027.png)
 
 ## Credits
 
